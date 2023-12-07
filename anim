@@ -1,0 +1,12 @@
+        switch action {
+        case .addShape(let shapeData):
+            newCollage.shapes.append(shapeData)
+            
+        case .changeBackground(let action):
+            newCollage.background = shapeReducer.reduce(newCollage.background, action)
+            
+        case .connectControlPoints(let ids):
+            newCollage = connectControlPoints(ids, in: newCollage)
+            
+        case .disconnectControlPoints(let ids):
+            newCollage = disconnectControlPoints(ids, in: newCollage)
